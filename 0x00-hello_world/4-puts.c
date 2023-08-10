@@ -1,5 +1,5 @@
 #include <stdio.h>
-/*
+/**
  * function main is the entry point of the C program
  * program should print a specific line
  * program should always return 0
