@@ -5,42 +5,27 @@
  */
 int main(void)
 {
-	int a1 = '0';
-	int a2;
-	int b1;
-	int b2;
+	int a, b;
 
-	while (a1 <= '9')
+	for (a = 0; a < 100; a++)
 	{
-		a2 = '0';
-		while (a2 <= '9')
+		for (b = 0; b < 100; b++)
 		{
-			b1 = '0';
-			while (b1 <= '9')
+			if (a < b)
 			{
-				b2 = '0';
-				while (b2 <= '9')
+				putchar((a / 10) + 48);
+				putchar((a % 10) + 48);
+				putchar(' ');
+				putchar((b / 10) + 48);
+				putchar((b % 10) + 48);
+				if (a != 98 || b != 99)
 				{
-					if (!(a1 >= b1 && a2 >= b2))
-					{
-						putchar(a1);
-						putchar(a2);
-						putchar(' ');
-						putchar(b1);
-						putchar(b2);
-						if (!((a1 == '9' && a2 == '8') && (b1 == '9' && b2 == '9')))
-						{
-							putchar(',');
-							putchar(' ');
-						}
-					}
-					b2++;
+					putchar(',');
+					putchar(' ');
 				}
-				b1++;
 			}
-			a2++;
+
 		}
-		a1++;
 	}
 	putchar('\n');
 	return (0);
