@@ -17,6 +17,11 @@ void print_times_table(int n)
 			{
 				z = x * y;
 
+				if (z >= 100)
+				{
+					_putchar(((z / 100) % 10) + '0');
+				}
+
 				if (z >= 10)
 				{
 					_putchar(((z / 10) % 10) + '0');
@@ -27,6 +32,11 @@ void print_times_table(int n)
 				{
 					_putchar(',');
 					_putchar(' ');
+
+					if ((x * (y + 1)) < 100)
+					{
+						_putchar(' ');
+					}
 
 					if ((x * (y + 1)) < 10)
 					{
