@@ -20,10 +20,7 @@ void jack_bauer(void)
 					_putchar(':');
 					_putchar(k);
 					_putchar(l);
-					if ((i + j + k + l) != 19)
-					{
-						_putchar('\n');
-					}
+					_putchar('\n');
 				}
 			}
 		}
