@@ -18,11 +18,13 @@ void times_table(void)
 				_putchar(((z / 10) % 10) + '0');
 			}
 			_putchar((z % 10) + '0');
+
 			if (y != 9)
 			{
 				_putchar(',');
 				_putchar(' ');
-				if ((z / 10) <= 0)
+
+				if ((z / 10) == 0)
 					_putchar(' ');
 			}
 		}
