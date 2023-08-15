@@ -1,9 +1,7 @@
-#include <main.h>
+#include "main.h"
 /**
  * main - entry point.
  * Return: return 0 at success.
- * _putchar - function writes characters
- * c: character to be written by _putchar function
  */
 int main(void)
 {
