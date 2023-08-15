@@ -7,21 +7,27 @@
 
 int main(void)
 {
-	long f0 = 1, f1 = 2, f2;
+	long f0 = 1, f1 = 2, fn;
 	int i;
-
-	printf("%ld", f0);
-	printf(", ");
-	printf("%ld", f1);
-	printf(", ");
 
 	for (i = 0; i < 50; i++)
 	{
-		f2 = f1 + f0;
+		if (i == 0)
+		{
+			fn = f0;
+		}
+		else if (i == 1)
+		{
+			fn = f1;
+		}
+		else
+		{
+			fn = f1 + f0;
+			f0 = f1;
+			f1 = fn;
+		}
 
-		printf("%ld", f2);
-		f0 = f1;
-		f1 = f2;
+		printf("%ld", fn);
 
 		if (i < 49)
 		{
