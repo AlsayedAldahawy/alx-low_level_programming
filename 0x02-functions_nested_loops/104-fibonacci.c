@@ -7,37 +7,40 @@
 
 int main(void)
 {
-	unsigned long int A, B, A1, A2, B1, B2;
+	unsigned long Fn_lft, Fn_rgt, F1_lft = 0, F2_lft = 0, F1_rgt = 1, F2_rgt = 2;
 	int i;
 
-	A = 1;
-	B = 2;
-
-	printf("%lu", A);
-
-	for (i = 1; i < 91; i++)
+	for (i = 0; i < 98; i++)
 	{
-		printf(", %lu", B);
-		B = B + A;
-		A = B - A;
+		if (i < 2)
+		{
+			Fn_lft = 0;
+			Fn_rgt = F1_rgt + (F2_rgt * ((float)i / 2));
+		}
+		else
+		{
+			Fn_lft = F1_lft + F2_lft;
+			Fn_rgt = F1_rgt + F2_rgt;
+
+			if (((Fn_rgt) / (1000000)) > 0)
+			{
+				Fn_lft++;
+				Fn_rgt = Fn_rgt % (1000000);
+			}
+			F1_lft = F2_lft;
+			F1_rgt = F2_rgt;
+			F2_lft = Fn_lft;
+			F2_rgt = Fn_rgt;
+		}
+		if (Fn_lft == 0)
+		{
+			printf("%lu", Fn_rgt);
+		}
+		else
+		{
+			printf("%lu%lu", Fn_lft, Fn_rgt);
+		}
+		i != 97 ? printf(", ") : printf("\n");
 	}
-
-	A1 = A / 1000000000;
-	A2 = A % 1000000000;
-	B1 = B / 1000000000;
-	B2 = B % 1000000000;
-
-	for (i = 92; i < 99; ++i)
-	{
-		printf(", %lu", B1 + (B2 / 1000000000));
-		printf("%lu", B2 % 1000000000);
-		B1 = B1 + A1;
-		A1 = B1 - A1;
-		B2 = B2 + A2;
-		A2 = B2 - A2;
-	}
-
-	printf("\n");
-
 	return (0);
 }
