@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+/**
+ * main - prints the first 50 Fibonacci numbers
+ * Return: 0 if success
+ */
+
+int main(void)
+{
+	unsigned long f0 = 1, f1 = 2, fn;
+	int i;
+
+	for (i = 0; i < 98; i++)
+	{
+		if (i == 0)
+		{
+			fn = f0;
+		}
+		else if (i == 1)
+		{
+			fn = f1;
+		}
+		else
+		{
+			fn = f1 + f0;
+			f0 = f1;
+			f1 = fn;
+		}
+
+		printf("%lu", fn);
+
+		if (i < 97)
+		{
+			printf(", ");
+		}
+	}
+	printf("\n");
+	return (0);
+}
