@@ -10,7 +10,7 @@ int main(void)
 	unsigned long f0 = 1, f1 = 2, fn;
 	int i;
 
-	for (i = 0; i < 98; i++)
+	for (i = 0; i < 100; i++)
 	{
 		if (i == 0)
 		{
@@ -29,7 +29,7 @@ int main(void)
 
 		printf("%lu", fn);
 
-		if (i < 97)
+		if (i < 99)
 		{
 			printf(", ");
 		}
