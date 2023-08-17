@@ -20,6 +20,8 @@ void print_diagonal(int n)
 			j++;
 		}
 		_putchar('\\');
+		if (i != (n - 1))
+			_putchar('\n');
 		i++;
 	}
 
