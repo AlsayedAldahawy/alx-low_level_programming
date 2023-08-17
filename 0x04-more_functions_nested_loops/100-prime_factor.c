@@ -10,23 +10,22 @@
 
 int main(void)
 {
-	int i = 2, PF;
-	unsigned long NUM_Remain = 612852475143;
+	int i = 2;
+	unsigned long Hi_PF = 612852475143;
 	int NUM_root = sqrt(612852475143);
 
 
 	while (i <= NUM_root)
 	{
-		if ((NUM_Remain % i) == 0)
+		if ((Hi_PF % i) == 0)
 		{
-			PF = i;
-			NUM_Remain = NUM_Remain / i;
+			Hi_PF = Hi_PF / i;
 		}
 		else
 		{
 			i++;
 		}
 	}
-	printf("%d\n", PF);
+	printf("%ld\n", Hi_PF);
 	return (0);
 }
