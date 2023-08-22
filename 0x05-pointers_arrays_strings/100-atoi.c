@@ -9,28 +9,41 @@
 
 int _atoi(char *s)
 {
-	int i = 0, len = 0, sum = 0, mul = 1, sign, digit;
+	unsigned int len = 0, digit, int_len = 0;
+	int  sum = 0, brk = 0, neg_sign = 0;
+
+	/**
+	 * calculate the length of the string.
+	 * calculate the sum : the integer value.
+	 * calculate the length of the integer.
+	 * calculate the negative sign.
+	*/
 
 	while (*(s + len) != '\0')
 	{
-
+		if (*(s + len) >= '0' && *(s + len) <= '9' && brk == 0)
+		{
+			digit = *(s + len) - '0';
+			sum = (sum * 10) + digit;
+			int_len++;
+		}
+		else if (*(s + len) == '-' && brk == 0)
+		{
+			neg_sign++;
+		}
+		if ((*(s + len) < '0' || *(s + len) > '9') && int_len > 0)
+		{
+			brk++;
+		}
 		len++;
 	}
+	/**
+	 *
+	 * testing the values of len, int_len, neg_sign.
+	 * printf("length:%i\nint_len:%i\nsign:%i\n", len, int_len, neg_sign);
+	 *
+	 */
 
-	while (i <= len)
-	{
-		if (*(s + i) >= '0' && *(s + i) <= '9')
-		{
-			digit = (*(s + i) - 48) * mul;
-			sum = sum + digit;
-			mul = mul * 10;
-		}
-		else if (*(s + i) == '-')
-		{
-			sign++;
-		}
-		i++;
-	}
-	(sign % 2 == 0) ? (sum = sum) : (sum -= sum);
+	(neg_sign % 2 == 0) ? (sum = sum) : (sum *= -1);
 	return (sum);
 }
