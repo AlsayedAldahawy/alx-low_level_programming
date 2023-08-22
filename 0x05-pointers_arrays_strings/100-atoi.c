@@ -1,39 +1,36 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * _atoi - a function that convert a string to an integer.
  * @s: The pointer to convert
  *
- * Return: returns the integer
+ * Return: returns an integer
  */
+
 int _atoi(char *s)
 {
-	int i = 0;
-	unsigned int num = 0;
-	int m = 1, digit_conf = 0;
+	int i = 0, len = 0, sum = 0, mul = 1, sign, digit;
 
-	while (s[i])
+	while (*(s + len) != '\0')
 	{
-		if (s[i] == 45)
-		{
-			m *= -1;
-		}
 
-		while (s[i] >= 48 && s[i] <= 57)
-		{
-			digit_conf = 1;
-			num = (num * 10) + (s[i] - '0');
-			i++;
-		}
-
-		if (digit_conf == 1)
-		{
-			break;
-		}
-
-		i++;
+		len++;
 	}
 
-	num = num * m;
-	return (num);
+	while (i <= len)
+	{
+		if (*(s + i) >= '0' && *(s + i) <= '9')
+		{
+			digit = (*(s + i) - 48) * mul;
+			sum = sum + digit;
+			mul = mul * 10;
+		}
+		else if (*(s + i) == '-')
+		{
+			sign++;
+		}
+		i++;
+	}
+	(sign % 2 == 0) ? (sum = sum) : (sum -= sum);
+	return (sum);
 }
