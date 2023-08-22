@@ -23,8 +23,6 @@ void rev_string(char *s)
 	i--;
 	len = i;
 
-	printf("c: %i\n", len);
-
 	while (i >= len / 2)
 	{
 		c = *(s + i);
