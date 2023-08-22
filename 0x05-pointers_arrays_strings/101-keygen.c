@@ -12,7 +12,7 @@ int main(void)
 {
 	int pass[100];
 	int i, SUM = 0, j;
-	
+
 	srand(time(NULL));
 
 	for (i = 0; i <= 100 - 1; i++)
@@ -28,7 +28,7 @@ int main(void)
 			SUM += j;
 
 			putchar(j + '0');
-            
+
 			break;
 		}
 	}
