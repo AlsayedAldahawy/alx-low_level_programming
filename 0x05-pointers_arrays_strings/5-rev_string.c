@@ -22,9 +22,9 @@ void rev_string(char *s)
 
 	i--;
 	len = i;
-	(i % 2 == 0) ? (len2 = len) : (len2 = len + 1);
+	(i % 2 == 0) ? (len2 = len / 2) : (len2 = (len / 2) + 1);
 
-	while (i >= len / 2)
+	while (i >= len2)
 	{
 		c = *(s + i);
 		*(s + i) = *(s + len - i);
