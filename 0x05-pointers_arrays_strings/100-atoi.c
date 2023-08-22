@@ -9,8 +9,8 @@
 
 int _atoi(char *s)
 {
-	unsigned int len = 0, digit, int_len = 0;
-	int  sum = 0, brk = 0, neg_sign = 0;
+	unsigned int len = 0, digit, int_len = 0, sum = 0;
+	int brk = 0, neg_sign = 0;
 
 	/**
 	 * calculate the length of the string.
