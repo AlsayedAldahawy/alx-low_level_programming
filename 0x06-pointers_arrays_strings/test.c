@@ -3,6 +3,6 @@
 
 int main(void)
 {
-    printf("%i\n", strcmp("addddd", "adb"));
+    printf("%i\n", strcmp("xo", "jn"));
     return 0;
 }
