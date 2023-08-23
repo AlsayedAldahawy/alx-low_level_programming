@@ -10,15 +10,15 @@
 
 char *_strncat(char *dest, char *src, int n)
 {
-	int dest_len = 0;
-	int src_len = 0;
+	unsigned int dest_len = 0;
+	unsigned int src_len = 0;
 
 	while ((*(dest + dest_len) != '\0'))
 	{
 		dest_len++;
 	}
 
-	while (src_len < n)
+	while (src_len < (unsigned int) n)
 	{
 		if (*(src + src_len) == '\0')
 			break;
