@@ -23,7 +23,7 @@ char *cap_string(char *s)
 				sep_count = 1;
 			}
 		}
-		if (s[i] >= 'A' && s[i] <= 'Z')
+		if ((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= '0' && s[i] <= '9'))
 		{
 			sep_count = 0;
 		}
