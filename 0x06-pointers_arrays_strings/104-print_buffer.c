@@ -2,13 +2,13 @@
 #include <stdio.h>
 
 /**
- * print_line - prints a buffer
+ * printLine - prints a buffer
  * @b: pointer to buffer to be printed
  * @size: size of buffer
  * @line: line of buffer to print
  */
 
-void print_line(char *b, int line, int size);
+void printLine(char *b, int line, int size);
 
 /**
  * print_buffer - prints a buffer
@@ -26,12 +26,12 @@ void print_buffer(char *b, int size)
 		if (i < (size / 10))
 		{
 			M = 9;
-			print_line(b, i, M);
+			printLine(b, i, M);
 		}
 		else
 		{
 			M = (size % 10) - 1;
-			print_line(b, i, M);
+			printLine(b, i, M);
 		}
 		putchar('\n');
 	}
@@ -40,13 +40,13 @@ void print_buffer(char *b, int size)
 }
 
 /**
- * print_line - prints a buffer
+ * printLine - prints a buffer
  * @b: buffer to print
  * @size: size of buffer
  * @line: line of buffer to print
  */
 
-void print_line(char *b, int line, int size)
+void printLine(char *b, int line, int size)
 {
 	int i, j;
 
