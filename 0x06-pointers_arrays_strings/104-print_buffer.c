@@ -8,7 +8,7 @@
  * @line: line of buffer to print
  */
 
-void print_line(char *b, int size, int line);
+void print_line(char *b, int line, int size);
 
 /**
  * print_buffer - prints a buffer
@@ -26,12 +26,12 @@ void print_buffer(char *b, int size)
 		if (i < (size / 10))
 		{
 			M = 9;
-			print_line(b, M, i);
+			print_line(b, i, M);
 		}
 		else
 		{
 			M = (size % 10) - 1;
-			print_line(b, M, i);
+			print_line(b, i, M);
 		}
 		putchar('\n');
 	}
@@ -46,7 +46,7 @@ void print_buffer(char *b, int size)
  * @line: line of buffer to print
  */
 
-void print_line(char *b, int size, int line)
+void print_line(char *b, int line, int size)
 {
 	int i, j;
 
