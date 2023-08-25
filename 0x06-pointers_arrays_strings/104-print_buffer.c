@@ -10,12 +10,12 @@
 
 void print_buffer(char *b, int size)
 {
-	unsigned int i = 0, j = 10;
+	int i = 0, j = 10;
 	int size_var = size;
 
-	while (i <= (unsigned int) size)
+	while (i <= size)
 	{
-		if (i == (unsigned int) size)
+		if (i == size)
 		{
 			printf("\n");
 			break;
