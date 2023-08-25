@@ -40,9 +40,8 @@ char *remove_left_zeros(int size, char *r)
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int len_1 = 0, len_2 = 0, carry = 0, sum = 0;
-	int m1 = 1, m2 = 1, digit1, digit2;
-	int len_r = size_r;
+	int len_1 = 0, len_2 = 0, len_r = size_r;
+	int m1 = 1, m2 = 1, digit1, digit2, carry = 0, sum = 0;
 
 	while (n1[len_1] != '\0')
 		len_1++;
