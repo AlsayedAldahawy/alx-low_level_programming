@@ -1,31 +1,57 @@
 #include "main.h"
 #include <stdio.h>
 
+#include "main.h"
+#include <stdio.h>
+
 /**
- * print_line - prints a buffer
- * @b: pointer to buffer to be printed
- * @size: size of buffer
- * @line: line of buffer to print
+ * print_buffer - a function that prints a buffer.
+ * @b: pointer to the buffer.
+ * @size: size of the buffer.
+ *
  */
 
-void print_line(char *b, int size, int line)
+void print_buffer(char *b, int size)
 {
-	int j, k;
+	int i = 0, j = 10;
+	int M = 10;
 
-	for (j = 0; j <= 9; j++)
+	if (size <= 0)
 	{
-		if (j <= size)
-			printf("%02x", b[line * 10 + j]);
-		else
-			printf("  ");
-		if (j % 2)
-			putchar(' ');
+		putchar('\n');
+		return;
 	}
-	for (k = 0; k <= size; k++)
-	{
-		if (b[line * 10 + k] > 31 && b[line * 10 + k] < 127)
-			putchar(b[line * 10 + k]);
-		else
-			putchar('.');
-	}
+		while (i <= size)
+		{
+			if (i == size)
+			{
+				putchar('\n');
+				break;
+			}
+            if (i < (size / 10))
+                M = (size % 10);
+			if (i % 10 == 0)
+			{
+				printf("%08x: ", i);
+				for (j = 1; j <= M; j++)
+				{
+					if (M != 10)
+					{
+						putchar(' ');
+						putchar(' ');
+					}
+					else
+						printf("%02x", b[i + j - 1]);
+					if (j % 2 == 0)
+						putchar(' ');
+				}
+			}
+            if (b[i] > 31 && b[i] < 127)
+			    putchar(b[i]);
+		    else
+			    putchar('.');
+			if ((i + 1) % 10 == 0)
+				putchar('\n');
+			i++;
+		}
 }

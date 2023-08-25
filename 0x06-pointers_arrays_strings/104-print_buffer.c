@@ -23,13 +23,13 @@ void print_buffer(char *b, int size)
 	for (i = 0; i <= (size - 1) / 10 && size != 0; i++)
 	{
 		printf("%08x: ", i * 10);
-		if (i < size / 10)
+		if (i < (size / 10))
 		{
 			print_line(b, 9, i);
 		}
 		else
 		{
-			print_line(b, size % 10 - 1, i);
+			print_line(b, (size % 10) - 1, i);
 		}
 		putchar('\n');
 	}
@@ -53,7 +53,11 @@ void print_line(char *b, int size, int line)
 		if (j <= size)
 			printf("%02x", b[line * 10 + j]);
 		else
-			printf("  ");
+		{
+			putchar(' ');
+			putchar(' ');
+		}
+
 		if (j % 2)
 			putchar(' ');
 	}
