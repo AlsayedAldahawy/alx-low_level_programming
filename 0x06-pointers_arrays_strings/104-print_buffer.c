@@ -38,7 +38,7 @@ void print_buffer(char *b, int size)
 			}
 		}
 
-		if (b[i] <= 10)
+		if (b[i] <= 31 || b[i] >= 127)
 			printf(".");
 		else
 			printf("%c", b[i]);
