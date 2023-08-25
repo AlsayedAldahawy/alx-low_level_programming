@@ -46,7 +46,7 @@ void print_buffer(char *b, int size)
 
 void print_line(char *b, int size, int line)
 {
-	int j, k;
+	int i, j;
 
 	for (j = 0; j <= 9; j++)
 	{
@@ -61,11 +61,11 @@ void print_line(char *b, int size, int line)
 		if (j % 2 != 0)
 			putchar(' ');
 	}
-	for (k = 0; k <= size; k++)
+	for (i = 0; i <= size; i++)
 	{
-		if (b[line * 10 + k] <= 31 || b[line * 10 + k] >= 127)
+		if (b[line * 10 + i] <= 31 || b[line * 10 + i] >= 127)
 			putchar('.');
 		else
-			putchar(b[line * 10 + k]);
+			putchar(b[line * 10 + i]);
 	}
 }
