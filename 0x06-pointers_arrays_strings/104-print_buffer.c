@@ -18,18 +18,20 @@ void print_line(char *b, int size, int line);
 
 void print_buffer(char *b, int size)
 {
-	int i;
+	int i, M;
 
 	for (i = 0; i <= (size - 1) / 10 && size != 0; i++)
 	{
 		printf("%08x: ", i * 10);
 		if (i < (size / 10))
 		{
-			print_line(b, 9, i);
+			M = 9;
+			print_line(b, M, i);
 		}
 		else
 		{
-			print_line(b, (size % 10) - 1, i);
+			M = (size % 10) - 1;
+			print_line(b, M, i);
 		}
 		putchar('\n');
 	}
