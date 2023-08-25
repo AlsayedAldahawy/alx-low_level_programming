@@ -58,14 +58,14 @@ void print_line(char *b, int size, int line)
 			putchar(' ');
 		}
 
-		if (j % 2)
+		if (j % 2 != 0)
 			putchar(' ');
 	}
 	for (k = 0; k <= size; k++)
 	{
-		if (b[line * 10 + k] > 31 && b[line * 10 + k] < 127)
-			putchar(b[line * 10 + k]);
-		else
+		if (b[line * 10 + k] <= 31 || b[line * 10 + k] >= 127)
 			putchar('.');
+		else
+			putchar(b[line * 10 + k]);
 	}
 }
