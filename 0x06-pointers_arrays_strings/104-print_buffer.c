@@ -14,9 +14,10 @@ void print_buffer(char *b, int size)
 	int size_var = size;
 
 	if (size <= 0)
-		putchar('\n');
-	else
 	{
+		putchar('\n');
+		return;
+	}
 		while (i <= size)
 		{
 			if (i == size)
@@ -49,5 +50,4 @@ void print_buffer(char *b, int size)
 				putchar('\n');
 			i++;
 		}
-	}
 }
