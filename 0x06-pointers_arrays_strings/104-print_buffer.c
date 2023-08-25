@@ -2,52 +2,65 @@
 #include <stdio.h>
 
 /**
- * print_buffer - a function that prints a buffer.
- * @b: pointer to the buffer.
- * @size: size of the buffer.
- *
+ * print_line - prints a buffer
+ * @b: pointer to buffer to be printed
+ * @size: size of buffer
+ * @line: line of buffer to print
  */
 
+void print_line(char *b, int size, int line);
+
+/**
+ * print_buffer - prints a buffer
+ * @b: buffer to print
+ * @size: size of buffer
+ */
 void print_buffer(char *b, int size)
 {
-	int i = 0, j = 10;
-	int size_var = size;
+	int i;
 
-	if (size <= 0)
+	for (i = 0; i <= (size - 1) / 10 && size; i++)
 	{
-		putchar('\n');
-		return;
-	}
-		while (i <= size)
+		printf("%08x: ", i * 10);
+		if (i < size / 10)
 		{
-			if (i == size)
-			{
-				putchar('\n');
-				break;
-			}
-			if (i % 10 == 0)
-			{
-				printf("%08x: ", i);
-				for (j = 1; j <= 10; j++)
-				{
-					if (size_var <= 0)
-					{
-						putchar(' ');
-						putchar(' ');
-					}
-					else
-						printf("%02x", b[i + j - 1]);
-					if (j % 2 == 0)
-						putchar(' ');
-					size_var--;
-				}
-			}
-			if (b[i] <= 31 || b[i] >= 127)
-				putchar('.');
-			else
-				putchar(b[i]);
-			if ((i + 1) % 10 == 0)
-				putchar('\n');
-			i++;
+			print_line(b, 9, i);
 		}
+		else
+		{
+			print_line(b, size % 10 - 1, i);
+		}
+		putchar('\n');
+	}
+	if (size == 0)
+		putchar('\n');
+}
+
+/**
+ * print_line - prints a buffer
+ * @b: buffer to print
+ * @size: size of buffer
+ * @line: line of buffer to print
+ */
+
+void print_line(char *b, int size, int line)
+{
+	int j, k;
+
+	for (j = 0; j <= 9; j++)
+	{
+		if (j <= size)
+			printf("%02x", b[line * 10 + j]);
+		else
+			printf("  ");
+		if (j % 2)
+			putchar(' ');
+	}
+	for (k = 0; k <= size; k++)
+	{
+		if (b[line * 10 + k] > 31 && b[line * 10 + k] < 127)
+			putchar(b[line * 10 + k]);
+		else
+			putchar('.');
+	}
 }
