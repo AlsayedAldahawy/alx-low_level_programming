@@ -13,7 +13,7 @@ void print_buffer(char *b, int size)
 	int i = 0, j = 10;
 	int size_var = size;
 
-	if (size == 0)
+	if (size <= 0)
 		putchar('\n');
 	else
 	{
