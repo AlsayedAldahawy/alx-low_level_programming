@@ -10,11 +10,12 @@
 
 void print_buffer(char *b, int size)
 {
-	int i = 0, j = 10, size_var = size;
+	unsigned int i = 0, j = 10;
+	int size_var = size;
 
-	while (i <= size)
+	while (i <= (unsigned int) size)
 	{
-		if (i == size)
+		if (i == (unsigned int) size)
 		{
 			printf("\n");
 			break;
@@ -25,12 +26,11 @@ void print_buffer(char *b, int size)
 
 			for (j = 1; j <= 10; j++)
 			{
+
 				if (size_var <= 0)
 					printf("  ");
 				else
-				{
 					printf("%02x", b[i + j - 1]);
-				}
 
 				if (j % 2 == 0)
 					printf(" ");
