@@ -17,7 +17,7 @@ void print_buffer(char *b, int size)
 	{
 		if (i == size)
 		{
-			printf("\n");
+			putchar('\n');
 			break;
 		}
 		if (i % 10 == 0)
@@ -28,26 +28,26 @@ void print_buffer(char *b, int size)
 			{
 
 				if (size_var <= 0)
-					printf("  ");
+				{
+					putchar(' ');
+					putchar(' ');
+				}
 				else
 					printf("%02x", b[i + j - 1]);
 
 				if (j % 2 == 0)
-					printf(" ");
+					putchar(' ');
 				size_var--;
 			}
 		}
 
 		if (b[i] <= 31 || b[i] >= 127)
-			printf(".");
+			putchar('.');
 		else
-			printf("%c", b[i]);
+			putchar(b[i]);
 
 		if ((i + 1) % 10 == 0)
-		{
-			printf("\n");
-		}
-
+			putchar('\n');
 		i++;
 	}
 }
