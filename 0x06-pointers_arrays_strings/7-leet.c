@@ -10,10 +10,10 @@ char *leet(char *s)
 {
 	int i = 0, j;
 
-	char let[10] = {'a', 'A', 'e', 'E', 'o', 'O', 't', 'T', 'l', 'L'};
-	char let_n[10] = {'4', '4', '3', '3', '0', '0', '7', '7', '1', '1'};
+	char let[] = "aAeEoOtTlL";
+	char let_n[] = {'4', '4', '3', '3', '0', '0', '7', '7', '1', '1'};
 
-	while (s[i] != '\n')
+	while (s[i] != '\0')
 	{
 		for (j = 0; j < 10; j++)
 		{
