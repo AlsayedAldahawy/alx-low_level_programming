@@ -28,8 +28,6 @@ char *_strstr(char *haystack, char *needle)
 			}
 		}
 
-		printf("j:%i\n", j);
-
 		if (found)
 		{
 			return (haystack + i);
