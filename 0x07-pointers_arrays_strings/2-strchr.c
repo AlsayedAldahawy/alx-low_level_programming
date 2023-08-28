@@ -13,7 +13,6 @@
 char *_strchr(char *s, char c)
 {
 	unsigned int i = 0;
-	char *ptr = NULL;
 
 	while (*(s + i) != '\0')
 	{
@@ -21,5 +20,7 @@ char *_strchr(char *s, char c)
 			return (s + i);
 		i++;
 	}
-	return (ptr);
+	if (c == '\0')
+		return (s + i);
+	return (NULL);
 }
