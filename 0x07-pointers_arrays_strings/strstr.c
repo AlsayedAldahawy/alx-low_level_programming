@@ -10,27 +10,22 @@
 
 char *_strstr(char *haystack, char *needle)
 {
-	int i = 0, j = 0, found = 0;
+	unsigned int i = 0, j, k;
 
-	while (haystack[i] && needle[0])
+	while (haystack[i])
 	{
 		if (haystack[i] == needle[0])
 		{
-			found = 1;
-
-			for (j = 0; needle[j]; j++)
+			for (j = 0, k = i; needle[j]; j++, k++)
 			{
-				if (haystack[i + j] != needle[j])
+				if (needle[j] != haystack[i])
 				{
-					found = 0;
 					break;
 				}
 			}
 		}
 
-		printf("j:%i\n", j);
-
-		if (found)
+		if (needle[j] == '\0')
 		{
 			return (haystack + i);
 		}
