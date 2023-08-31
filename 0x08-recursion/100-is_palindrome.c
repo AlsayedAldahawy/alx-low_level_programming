@@ -19,19 +19,19 @@ int len_str(char *s)
 	return (1 + len_str(s + 1));
 }
 
-int str_chk_palin(char *s, int len)
+int str_chk_palin(char *s, int len, char *s2)
 {
 	if (len <= 0)
 	{
 		return (1);
 	}
 
-	if (*s != *(s + len - 1))
+	if (*s != *(s2 + len - 1))
 	{
 		return (0);
 	}
 	
-	return(str_chk_palin(s + 1, len - 1));
+	return(str_chk_palin(s + 1, len - 1, s2));
 }
 
 int is_palindrome(char *s)
@@ -41,5 +41,5 @@ int is_palindrome(char *s)
 		return (1);
 	}
 
-	return (str_chk_palin(s, len_str(s)));
+	return (str_chk_palin(s, len_str(s), s));
 }
