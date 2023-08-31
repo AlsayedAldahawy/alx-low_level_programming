@@ -9,6 +9,20 @@
  * If n does not have a natural square root, the function should return -1
  *
  */
+int squareroot(int n, int m)
+{
+    if ( m * m == n)
+    {
+        return (m);
+    }
+    if (m * m < n)
+    {
+        return (squareroot(n, m + 1));
+    }
+
+    return (-1);
+    
+}
 
 int _sqrt_recursion(int n)
 {
@@ -17,6 +31,5 @@ int _sqrt_recursion(int n)
         return (-1);
     }
 
-
-    
+    return (squareroot(n, 0));
 }
