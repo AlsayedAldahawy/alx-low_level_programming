@@ -19,11 +19,9 @@ int len_str(char *s)
 	return (1 + len_str(s + 1));
 }
 
-int is_palindrome(char *s)
+int str_chk_palin(char *s, int len)
 {
-	int len = len_str(s);
-
-	if (*s == '\0')
+	if (len <= 0)
 	{
 		return (1);
 	}
@@ -32,6 +30,16 @@ int is_palindrome(char *s)
 	{
 		return (0);
 	}
+	
+	return(str_chk_palin(s + 1, len - 1));
+}
 
-	return (1 * is_palindrome(s + 1));
+int is_palindrome(char *s)
+{
+	if (*s == '\0')
+	{
+		return (1);
+	}
+
+	return (str_chk_palin(s, len_str(s)));
 }
