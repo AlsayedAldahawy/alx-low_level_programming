@@ -2,12 +2,12 @@
 #include <stdio.h>
 
 /**
- * is_palindrome -  a function that returns 1 if a string is a palindrome and 0 if not.
- * An empty string is a palindrome.
+ * len_str -  a function that calculates
+ * length of string.
  *
  * @s: string.
  *
- * Return: 1 if a string is a palindrome and 0 if not.
+ * Return: the length.
  *
  */
 int len_str(char *s)
@@ -18,6 +18,19 @@ int len_str(char *s)
 	}
 	return (1 + len_str(s + 1));
 }
+
+/**
+ * str_chk_palin -  a function that returns 1
+ * if a string is a palindrome and 0 if not.
+ * An empty string is a palindrome.
+ *
+ * @s: string.
+ * @s2: same string.
+ * @len: string length.
+ *
+ * Return: 1 if a string is a palindrome and 0 if not.
+ *
+ */
 
 int str_chk_palin(char *s, int len, char *s2)
 {
@@ -30,9 +43,20 @@ int str_chk_palin(char *s, int len, char *s2)
 	{
 		return (0);
 	}
-	
-	return(str_chk_palin(s + 1, len - 1, s2));
+
+	return (str_chk_palin(s + 1, len - 1, s2));
 }
+
+/**
+ * is_palindrome -  a function that returns 1
+ * if a string is a palindrome and 0 if not.
+ * An empty string is a palindrome.
+ *
+ * @s: string.
+ *
+ * Return: 1 if a string is a palindrome and 0 if not.
+ *
+ */
 
 int is_palindrome(char *s)
 {
