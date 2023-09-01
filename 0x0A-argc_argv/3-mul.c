@@ -51,13 +51,19 @@ int main(int argc, char *argv[])
 
 int str_to_int(char *s)
 {
-	int length = 0, num = 0;
+	int length = 0, num = 0, neg = 1;
 
 	while (s[length] != '\0')
 	{
+		if (s[length] == '-')
+		{
+			neg = -1;
+			length++;
+		}
+
 		num = (num * 10) + (s[length] - '0');
 		length++;
 	}
 
-	return (num);
+	return (neg * num);
 }
