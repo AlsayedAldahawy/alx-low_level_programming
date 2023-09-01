@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	else
 	{
 
-		printf("%i\n", str_to_int(argv[1]) * str_to_int(argv[2]));
+		printf("%li\n", (long)str_to_int(argv[1]) * str_to_int(argv[2]));
 
 	}
 	return (0);
