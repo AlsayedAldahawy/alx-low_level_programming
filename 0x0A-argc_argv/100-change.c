@@ -33,13 +33,9 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-
 	x = atoi(argv[1]);
-
 	if (x <= 0)
-	{
 		printf("0\n");
-	}
 	else
 	{
 		if (x / 25)
@@ -56,6 +52,11 @@ int main(int argc, char *argv[])
 		{
 			coins += (x / 5);
 			x %= 5;
+		}
+		if (x / 2)
+		{
+			coins += (x / 2);
+			x %= 2;
 		}
 		if (x / 1)
 		{
