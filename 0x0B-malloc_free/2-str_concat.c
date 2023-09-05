@@ -3,7 +3,7 @@
 #include "main.h"
 
 /**
- * _strdup - a function that concatenates two strings.
+ * str_concat - a function that concatenates two strings.
  *
  * @s1: string 1.
  * @s2: string 2.
@@ -19,26 +19,30 @@
 
 char *str_concat(char *s1, char *s2)
 {
-	int i;
-	int size1 = 0, size2 = 0;
+	int i, size1 = 1, size2 = 1;
 	char *ptr;
 
-	while (s1[size1] != '\0')
+	if (s1 != NULL)
 	{
-		size1++;
+		size1 = 0;
+		while (s1[size1] != '\0')
+		{
+			size1++;
+		}
 	}
-
-	while (s2[size2] != '\0')
+	if (s2 != NULL)
 	{
-		size2++;
+		size2 = 0;
+		while (s2[size2] != '\0')
+		{
+			size2++;
+		}
 	}
-
 	ptr = malloc(size1 + size2 + 1);
 	if (ptr == NULL)
 	{
 		return (NULL);
 	}
-
 	for (i = 0; i <= size1 + size2; i++)
 	{
 		if (i == size1 + size2)
@@ -52,8 +56,7 @@ char *str_concat(char *s1, char *s2)
 			ptr[i] = s1[i];
 			continue;
 		}
-		else
-			ptr[i] = s2[i - size1];
+		ptr[i] = s2[i - size1];
 	}
 	return (NULL);
 }
