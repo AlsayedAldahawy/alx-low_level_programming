@@ -25,17 +25,17 @@ char *_strdup(char *str)
 	unsigned int i, size = 0;
 	char *ptr;
 
-	while (*(str + size) != '\0')
-	{
-		size++;
-	}
-
 	if (str == NULL)
 	{
 		return (NULL);
 	}
 
-	ptr = malloc(size);
+	while (*(str + size) != '\0')
+	{
+		size++;
+	}
+
+	ptr = malloc(size + 1);
 
 	if (ptr == NULL)
 	{
