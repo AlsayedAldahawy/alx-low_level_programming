@@ -22,8 +22,13 @@
 
 char *_strdup(char *str)
 {
-	unsigned int i, size = (unsigned int)sizeof(str);
+	unsigned int i, size = 0;
 	char *ptr;
+
+	while (*(str + size) != '\0')
+	{
+		size++;
+	}
 
 	if (str == NULL)
 	{
