@@ -3,7 +3,7 @@
 #include "main.h"
 
 /**
- * free_grid - a function that concatenates all the arguments of your program.
+ * argstostr - a function that concatenates all the arguments of your program.
  * previously created by your alloc_grid function.
  *
  * @ac: arguments count.
@@ -27,7 +27,6 @@ char *argstostr(int ac, char **av)
 		{
 			size++;
 		}
-		
 	}
 
 	ptr = malloc(size + ac + 1);
