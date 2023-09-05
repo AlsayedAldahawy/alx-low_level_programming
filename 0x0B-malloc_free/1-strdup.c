@@ -22,7 +22,7 @@
 
 char *_strdup(char *str)
 {
-	int i, x = sizeof(str);
+	unsigned int i, size = (unsigned int)sizeof(str);
 	char *ptr;
 
 	if (str == NULL)
@@ -30,16 +30,16 @@ char *_strdup(char *str)
 		return (NULL);
 	}
 
-	ptr = malloc(sizeof(str));
+	ptr = malloc(size);
 
 	if (ptr == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; i <= (int)sizeof(str); i++)
+	for (i = 0; i <= size; i++)
 	{
-		if (i == (int)sizeof(str))
+		if (i == size)
 		{
 			*(ptr + i) = '\0';
 			return (ptr);
