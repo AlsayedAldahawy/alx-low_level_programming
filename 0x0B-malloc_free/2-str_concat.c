@@ -22,40 +22,32 @@ char *str_concat(char *s1, char *s2)
 	int i, j, size1 = 0, size2 = 0;
 	char *ptr;
 
-	if (s1 == NULL)
+	if (s1 != NULL)
 	{
-		size1 = 0;
+		for (size1 = 0; s1[size1] != '\0'; size1++)
+		;
 	}
-	else
+
+	if (s2 != NULL)
 	{
-		while (s1[size1] != '\0')
-		{
-			size1++;
-		}
+		for (size2 = 0; s2[size2] != '\0'; size2++)
+		;
 	}
-	if (s2 == NULL)
-	{
-		size2 = 1;
-	}
-	else
-	{
-		while (s2[size2] != '\0')
-		{
-			size2++;
-		}
-	}
+
 	ptr = malloc(size1 + size2 + 1);
+
 	if (ptr == NULL)
 		return (NULL);
+
 	for (i = 0; i < size1; i++)
 	{
 		ptr[i] = s1[i];
 	}
-	for (j = i; j < size1 + size2 + 1; j++)
+
+	for (j = 0; j < size2; j++)
 	{
-		ptr[j] = s2[j - i];
-		if (ptr[j] == '\0')
-			return (ptr);
+		ptr[i + j] = s2[j];
 	}
-	return (NULL);
+	ptr[size1 + size2] = '\0';
+	return (ptr);
 }
