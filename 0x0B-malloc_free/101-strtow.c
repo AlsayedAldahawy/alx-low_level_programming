@@ -21,12 +21,12 @@ char **strtow(char *str)
 	int i = 0, j = 0, words = 0, letters = 0, k = 0, n = 0, s;
 	char **arr;
 
-	if (str == NULL || *str == '\0')
+	words = wordCounter(str);
+	if (str == NULL || *str == '\0' || !words)
 	{
 		return (NULL);
 	}
 
-	words = wordCounter(str);
 	arr = malloc((words + 1) * sizeof(char *));
 	if (arr == NULL)
 		return (NULL);
