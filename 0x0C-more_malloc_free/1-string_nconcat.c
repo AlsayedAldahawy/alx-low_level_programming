@@ -44,19 +44,18 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		if (ptr == NULL)
 			return (NULL);
 
-	size--;
-	for (i = 0, j = 0; i < size; i++)
+	while (i < len1)
 	{
-		if (i < len1)
-		{
-			ptr[i] = s1[i];
-		}
-		else
-		{
-			ptr[i] = s2[j];
-			j++;
-		}
+		ptr[i] = s1[i];
+		i++;
 	}
-	ptr[size] = '\0';
+
+	while (n < len2 && i < (len1 + n))
+		ptr[i++] = s2[j++];
+
+	while (n >= len2 && i < (len1 + len2))
+		ptr[i++] = s2[j++];
+
+	ptr[i] = '\0';
 	return (ptr);
 }
