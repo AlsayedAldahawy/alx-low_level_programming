@@ -31,13 +31,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (n >= len_2)
 	{
 		size = len_1 + len_2 + 1;
-		ptr = malloc(sizeof(char) * (len_1 + len_2 + 1));
 	}
 	else
 	{
 		size = len_1 + n + 1;
-		ptr = malloc(sizeof(char) * (len_1 + n + 1));
 	}
+	ptr = malloc(sizeof(char) * size);
 	if (ptr == NULL)
 		return (NULL);
 
