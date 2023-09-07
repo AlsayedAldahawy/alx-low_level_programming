@@ -41,11 +41,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		ptr[i] = s1[i];
 	}
 
-	while (n < len_2 && i < (len_1 + n))
-		ptr[i++] = s2[j++];
-
-	while (n >= len_2 && i < (len_1 + len_2))
-		ptr[i++] = s2[j++];
+	for (j = 0; j < n; j++, i++)
+	{
+		ptr[i] = s2[j];
+	}
 
 	ptr[i] = '\0';
 
