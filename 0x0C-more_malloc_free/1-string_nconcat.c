@@ -23,9 +23,9 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	char *ptr;
 	unsigned int i = 0, j = 0, len_1 = 0, len_2 = 0, size;
 
-	while (s1 && s1[len_1])
+	while (s1 && *s1)
 		len_1++;
-	while (s2 && s2[len_2])
+	while (s2 && *s2)
 		len_2++;
 
 	if (n >= len_2)
