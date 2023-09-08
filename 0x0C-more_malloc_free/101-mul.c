@@ -41,27 +41,27 @@ int main(int argc, char *argv[])
 	len_1 = _strlen(str1);
 	len_2 = _strlen(str2);
 
-	len_r = len_1 + len_2 + 1;
+	len_r = len_1 + len_2;
 	res = malloc(sizeof(int) * len_r);
 	if (!res)
 		return (1);
-	for (i = 0; i <= len_1 + len_2; i++)
+	for (i = 0; i < len_1 + len_2; i++)
 		res[i] = 0;
-	for (len_1 = len_1 - 1; len_1 >= 0; len_1--)
+	for (len_1 = len_1; len_1 > 0; len_1--)
 	{
-		d1 = str1[len_1] - 48;
+		d1 = str1[len_1 - 1] - 48;
 		carry = 0;
-		for (len_2 = _strlen(str2) - 1; len_2 >= 0; len_2--)
+		for (len_2 = _strlen(str2); len_2 > 0; len_2--)
 		{
-			d2 = str2[len_2] - 48;
-			carry += res[len_1 + len_2 + 1] + (d1 * d2);
-			res[len_1 + len_2 + 1] = carry % 10;
+			d2 = str2[len_2 - 1] - 48;
+			carry += res[len_1 + len_2 - 1] + (d1 * d2);
+			res[len_1 + len_2 - 1] = carry % 10;
 			carry /= 10;
 		}
 		if (carry > 0)
-			res[len_1 + len_2 + 1] += carry;
+			res[len_1 + len_2] += carry;
 	}
-	for (i = 0; i < len_r - 1; i++)
+	for (i = 0; i < len_r; i++)
 	{
 		if (res[i])
 			frstD = 1;
