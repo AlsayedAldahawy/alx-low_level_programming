@@ -22,15 +22,15 @@ int isnum(char s[]);
  * ****You are allowed to use more than 5 functions in your file****
  */
 
-int main (int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-    if (argc != 3 || (!(isnum(argv[1]) && isnum(argv[2]))))
-    {
-        printf("Error\n");
-        exit(98);
-    }
-    printf("%lu\n", ston(argv[1]) * ston(argv[2]));
-    return (0);
+	if (argc != 3 || (!(isnum(argv[1]) && isnum(argv[2]))))
+	{
+		printf("Error\n");
+		exit(98);
+	}
+	printf("%lu\n", ston(argv[1]) * ston(argv[2]));
+	return (0);
 }
 
 /**
@@ -44,7 +44,7 @@ int main (int argc, char* argv[])
 unsigned long int ston(char *s)
 {
 	int length = 0, neg = 1;
-    unsigned long int num = 0;
+	unsigned long int num = 0;
 
 	while (s[length] != '\0')
 	{
