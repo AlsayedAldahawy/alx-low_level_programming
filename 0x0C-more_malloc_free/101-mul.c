@@ -9,6 +9,10 @@ int isnum(char s[]);
 /**
  * main -a program that multiplies two positive numbers.
  *
+ * @argv: arguments vector.
+ * @argc: arguments counter.
+ *
+ * Return: 0 when success.
  * Usage: mul num1 num2
  * num1 and num2 will be passed in base 10
  * Print the result, followed by a new line
