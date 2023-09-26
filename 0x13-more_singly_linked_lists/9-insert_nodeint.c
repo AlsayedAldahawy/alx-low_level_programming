@@ -33,7 +33,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		*head = new_node;
 		return (new_node);
 	}
-	while (i < idx - 1 && ptr->next)
+	while (i < idx - 1)
 	{
 		if (!ptr)
 			return (NULL);
