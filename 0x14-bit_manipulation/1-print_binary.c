@@ -13,22 +13,23 @@
 void print_binary(unsigned long int n)
 {
 	unsigned long int num = n;
-	int shift = 0, digit;
+	int shift = 0;
 
 	if (n == 0)
 	{
 		_putchar('0');
 		return;
 	}
-	while (num > 0)
+	while (num >>= 1)
 	{
-		num >>= 1;
 		shift++;
 	}
 
-	for (; shift >= 0; shift--)
+	for (; shift >= 0; --shift)
 	{
-		digit = (n >> shift) & 1;
-		_putchar(digit + '0');
+		if ((n >> shift) & 1)
+			printf("1");
+		else
+			printf("0");
 	}
 }
