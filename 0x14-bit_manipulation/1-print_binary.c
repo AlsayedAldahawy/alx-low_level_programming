@@ -12,29 +12,23 @@
 
 void print_binary(unsigned long int n)
 {
-	unsigned long int num = n, mask = 1;
-	int len = 0, digit;
-
-	printf("len = %i\n", len);
+	unsigned long int num = n;
+	int shift = 0, digit;
 
 	if (n == 0)
+	{
 		_putchar('0');
-
+		return;
+	}
 	while (num > 0)
 	{
 		num >>= 1;
-		mask = mask * 2;
-		len++;
+		shift++;
 	}
 
-	for (len = len, mask = mask / 2; len > 0; len--, mask /= 2)
+	for (; shift >= 0; shift--)
 	{
-		digit = n & mask;
-		if (digit == 0)
-		{
-			_putchar('0');
-		}
-		else
-			_putchar('1');
+		digit = (n >> shift) & 1;
+		_putchar(digit + '0');
 	}
 }
