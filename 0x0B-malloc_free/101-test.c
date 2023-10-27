@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int wordCounter(char *str);
+
 /**
  * strtow - a function that splits a string into words.
  * @str: string to be splitted.
@@ -19,20 +21,14 @@ char **strtow(char *str)
     int i = 0, j = 0, words = 0, letters = 0, k = 0, n = 0, s;
     char **arr;
 
-    if (str == NULL || *str == '\0')
-    {
-        return (NULL);
-    }
+    words = wordCounter(str);
+	if (str == NULL || *str == '\0' || !words)
+	{
+		return (NULL);
+	}
 
-    while (str[i])
-    {
-        if ((str[i] == ' ' && i != 0 && str[i - 1] != ' ') || (str[i + 1] == '\0' && str[i] != ' '))
-        {
-            words++;
-        }
-        i++;
-    }
     printf("words: %i\n", words);
+    
     arr = malloc(words * sizeof(char *));
     if (arr == NULL)
         return (NULL);
@@ -75,4 +71,26 @@ char **strtow(char *str)
     }
     return (arr);   
     
+}
+
+/**
+ * wordCounter - counts words in a string.
+ * @str: string.
+ *
+ * Return: number of words.
+ */
+
+int wordCounter(char *str)
+{
+	int i = 0, words = 0;
+
+	while (str[i])
+	{
+		if ((str[i] == 32 && i && str[i - 1] != 32) || (!str[i + 1] && str[i] != 32))
+		{
+			words++;
+		}
+		i++;
+	}
+	return (words);
 }

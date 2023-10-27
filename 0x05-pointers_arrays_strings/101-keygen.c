@@ -9,19 +9,25 @@
 
 int main(void)
 {
-	int i, ch;
+	int i = 0, x;
+	char ch;
 
 	/**
 	 * generating random number using time(), srand(), rand() functions.
 	*/
 
 	srand(time(NULL));
-	while (i <= 2646)
+
+	 x = rand() % 10000;
+	while (i <= x)
 	{
-		ch = rand() % 120;
+		ch = rand() % 128;
+		while(ch < ' ')
+		{
+			ch = rand() % 128;
+		}
 		putchar(ch);
 		i = i + ch;
 	}
-	putchar(2772 - i);
 	return (0);
 }
