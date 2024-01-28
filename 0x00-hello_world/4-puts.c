@@ -1,8 +1,10 @@
 #include <stdio.h>
+
 /**
- * main - function main is the entry point of the C program
- * Return: program should always return zero
+ * main - the entry point of the program
+ * Return: return the value 0 always if the program worked successfully
  */
+
 int main(void)
 {
 	puts("\"Programming is like building a multilingual puzzle");
