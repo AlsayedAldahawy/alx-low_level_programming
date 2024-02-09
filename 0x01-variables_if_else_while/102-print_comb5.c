@@ -3,7 +3,8 @@
 /**
  * main - entry point of the code
  * Return: 0 at success.
- * a program that prints all possible different combinations off two two-digit numbers.
+ * a program that prints all possible different combinations
+ * of two two-digit numbers.
  */
 
 int main(void)
@@ -15,11 +16,11 @@ int main(void)
 		for (i2 = '0'; i2 <= '9'; i2++)
 		{
 
-			for (j1 = i1; j1 <= '9'; j1++)
+			for (j1 = '0'; j1 <= '9'; j1++)
 			{
-				for (j2 = i2; j2 <= '9'; j2++)
+				for (j2 = '0'; j2 <= '9'; j2++)
 				{
-					if (i1 == j1 && i2 == j2)
+					if (i1 > j1 || ( i1 == j1 && i2 >= j2))
 					{
 						continue;
 					}
@@ -34,7 +35,7 @@ int main(void)
 						putchar(' ');
 					}
 				}
-			}	
+			}
 		}
 	}
 	putchar('\n');
