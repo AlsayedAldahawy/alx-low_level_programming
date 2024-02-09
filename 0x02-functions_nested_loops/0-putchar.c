@@ -1,8 +1,10 @@
 #include "main.h"
+
 /**
- * main - entry point.
- * Return: return 0 at success.
- */
+ * main - a program that prints _putchar, followed by a new line.
+ * Return: 0 at success.
+*/
+
 int main(void)
 {
 	_putchar('_');
