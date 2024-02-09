@@ -20,7 +20,7 @@ int main(void)
 			{
 				for (j2 = '0'; j2 <= '9'; j2++)
 				{
-					if (i1 > j1 || ( i1 == j1 && i2 >= j2))
+					if (i1 > j1 || (i1 == j1 && i2 >= j2))
 					{
 						continue;
 					}
