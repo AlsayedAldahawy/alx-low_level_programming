@@ -11,13 +11,13 @@ int main(void)
 	long int a = 1, b = 0, c = 0, s;
 
 	while (c++ < 50)
-    {
-        s = a + b;
-        printf("%li", s);
-        (c == 50) ? (c = c) : printf(", ");
-        b = a;
-        a = s;
-    }
-    printf("\n");
+	{
+		s = a + b;
+		printf("%li", s);
+		(c == 50) ? (c = c) : printf(", ");
+		b = a;
+		a = s;
+	}
+	printf("\n");
 	return (0);
 }
