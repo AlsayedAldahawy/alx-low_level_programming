@@ -3,7 +3,7 @@
 /**
  * main - entry point of the code
  * Return: 0 at success.
- * a program that prints all possible different combinations of two digits.
+ * a program that prints all possible different combinations of three digits.
  */
 
 int main(void)
