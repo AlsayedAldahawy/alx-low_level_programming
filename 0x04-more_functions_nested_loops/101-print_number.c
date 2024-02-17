@@ -7,31 +7,32 @@
  */
 void print_number(int n)
 {
-	int i, x, d, firstDigit = 0;
+	int i, xDigit, digit, firstDigitFlag = 0;
+	unsigned int N = n;
 
 	if (n < 0)
 	{
 		_putchar('-');
-		n = n * -1;
+		N = -N;
 	}
 
-	if (n == 0)
+	if (N == 0)
 	{
 		_putchar('0');
 	}
 
-	for (i = 0, x = 1000000000; i <= 10 && x > 0; i++, x /= 10)
+	for (i = 0, xDigit = 1000000000; i <= 10 && xDigit > 0; i++, xDigit /= 10)
 	{
-		d = (n / x) % 10;
+		digit = (N / xDigit) % 10;
 
-		if (d > 0)
+		if (digit > 0)
 		{
-			firstDigit = 1;
+			firstDigitFlag = 1;
 		}
 
-		if (firstDigit)
+		if (firstDigitFlag)
 		{
-			_putchar(d + '0');
+			_putchar(digit + '0');
 		}
 	}
 }
