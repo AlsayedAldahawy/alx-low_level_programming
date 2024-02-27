@@ -18,7 +18,6 @@ int _atoi(char *s)
 {
 	int i = 0, sign = 1, firstDigitFlag = 0;
 	unsigned int number = 0;
-
 	while (s[i])
 	{
 		if (s[i] == '-' && firstDigitFlag == 0)
