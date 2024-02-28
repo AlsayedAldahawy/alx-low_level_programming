@@ -11,13 +11,19 @@
  * You are not allowed to hard-code special values
  * @s: string to be converted
  *
- * Return: the converted nummber in int or 0 if there's no numbers in string
+ * Return: the converted number in int or 0 if there's no numbers in string
 */
 
 int _atoi(char *s)
 {
 	int i = 0, sign = 1, firstDigitFlag = 0;
 	unsigned int number = 0;
+
+	/**
+	 * firstDigitFlag: 0 when first digit hasn't appeared yeat, >= 1 otherwise.
+	 * sign: determine the sign
+	*/
+
 	while (s[i])
 	{
 		if (s[i] == '-' && firstDigitFlag == 0)
@@ -29,9 +35,7 @@ int _atoi(char *s)
 			number = (number * 10) + (s[i] - '0');
 		}
 		if (firstDigitFlag >= 1 && (s[i] < '0' || s[i] > '9'))
-		{
 			break;
-		}
 		i++;
 	}
 	return (sign * number);
