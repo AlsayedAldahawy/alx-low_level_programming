@@ -7,29 +7,31 @@
  */
 void print_number(int n)
 {
-	int NumberOfDigits = 0, x, digit, divider, i;
-	unsigned int num;
+	int digitsNumber = 0, x, digit, divider, i;
+	unsigned int num = n;
 
 	if (n < 0)
 	{
 		_putchar('-');
-		num = (n * -1);
+		num = ((n / 10) * -1);
+		num *= 10;
 	}
-	else
-		num = n;
+
+	/* checking num values. */
+	/* printf("num of %d = %d\n",n, num); */
 
 	/* claculating number of digits */
-	for (NumberOfDigits = 1, x = num; (x / 10) > 0; NumberOfDigits++, x = (x / 10))
+	for (digitsNumber = 1, x = num; (x / 10) > 0; digitsNumber++, x = (x / 10))
 	;
 
 	/*_putchar('@');*/
-	/*_putchar(NumberOfDigits + '0');*/
+	/*_putchar(digitsNumber + '0');*/
 	/*_putchar('@');*/
 
-	for (NumberOfDigits = NumberOfDigits; NumberOfDigits > 0; NumberOfDigits--)
+	for (digitsNumber = digitsNumber; digitsNumber > 0; digitsNumber--)
 	{
 		divider = 1;
-		for (i = NumberOfDigits - 1; i > 0; i--)
+		for (i = digitsNumber - 1; i > 0; i--)
 		{
 			divider = divider * 10;
 		}
