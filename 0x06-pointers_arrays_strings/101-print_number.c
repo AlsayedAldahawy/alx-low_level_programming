@@ -8,13 +8,14 @@
 void print_number(int n)
 {
 	int digitsNumber = 0, x, digit, divider, i;
-	unsigned int num = n;
+	unsigned int num = n, reminder;
 
 	if (n < 0)
 	{
 		_putchar('-');
+		reminder = (n % 10) * -1;
 		num = ((n / 10) * -1);
-		num *= 10;
+		num = (num * 10) + reminder;
 	}
 
 	/* checking num values. */
