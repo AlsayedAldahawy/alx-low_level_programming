@@ -7,19 +7,19 @@
  */
 void print_number(int n)
 {
-	int digitsNumber = 0, x, digit, divider, i;
-	unsigned int num = n, reminder;
+	int digitsNumber = 0, digit, divider, reminder, i;
+	unsigned int num = n, x;
 
 	if (n < 0)
 	{
 		_putchar('-');
-		reminder = (n % 10) * -1;
-		num = ((n / 10) * -1);
-		num = (num * 10) + reminder;
+		reminder = (n % 10);
+		num = ((n / 10));
+		num = -((num * 10) + reminder);
 	}
 
 	/* checking num values. */
-	/* printf("num of %d = %d\n",n, num); */
+	/* printf("num of %d = %u\n",n, num); */
 
 	/* claculating number of digits */
 	for (digitsNumber = 1, x = num; (x / 10) > 0; digitsNumber++, x = (x / 10))
