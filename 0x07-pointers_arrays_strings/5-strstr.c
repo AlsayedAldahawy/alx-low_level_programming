@@ -6,7 +6,7 @@
  * @needle: string containing the characters to find.
  * Return: Returns a pointer to the beginning of the located substring,
  * or NULL if the substring is not found.
-*/
+ */
 
 char *_strstr(char *haystack, char *needle)
 {
@@ -14,16 +14,13 @@ char *_strstr(char *haystack, char *needle)
 
 	while (haystack[i])
 	{
-		if (haystack[i] == needle[0])
+		for (j = 0; needle[j]; j++)
 		{
-			for (j = 0; needle[j]; j++)
-			{
-				if (haystack[i + j] != needle[j])
-					break;
-			}
-			if (!needle[j])
-				return (haystack + i);
+			if (haystack[i + j] != needle[j])
+				break;
 		}
+		if (!needle[j])
+			return (haystack + i);
 		i++;
 	}
 	return (NULL);
