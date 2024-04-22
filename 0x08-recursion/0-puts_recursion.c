@@ -8,12 +8,18 @@
 
 void _puts_recursion(char *s)
 {
-	if (s[0] == '\0')
+	if (*s == '\0')
 	{
 		_putchar('\n');
 		return;
 	}
 
-	_putchar(s[0]);
+	/**
+	 * *s points to the first character in the string
+	 * every time we use the recursion we increment the pointer by 1
+	 * which will make it move 1 byte(char) forward to point to next character
+	*/
+
+	_putchar(*s);
 	_puts_recursion(s + 1);
 }
