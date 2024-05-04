@@ -63,7 +63,7 @@ done
 
 # Display files not found
 for filename in "${FILES_NAMES[@]}"; do
-    echo -e "\e[31m$filename file not found\e[0m"  # Print the count in Red
+    echo -e "\e[31m$filename file not found\e[0m"  # Print the non-found file in Red
     ((NFD_FILS += 1))
 done
 
