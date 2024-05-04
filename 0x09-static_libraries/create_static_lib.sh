@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # shellcheck disable=SC2035
 
 gcc -c -Wall -Werror -pedantic *.c
