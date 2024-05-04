@@ -3,6 +3,9 @@
 # Description: Copies specific files from a repository to a destination directory
 # Author: AlsayedAldahawy
 
+# Note: This script is not an official task of the project.
+# It was created to help copy multiple files for personal use.
+
 # Set repository path and destination path
 REPO_PATH="$HOME/ALX/alx-low_level_programming/*/"
 DEST_PATH="$HOME/ALX/alx-low_level_programming/0x09-static_libraries"
