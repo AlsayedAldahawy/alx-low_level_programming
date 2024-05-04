@@ -1,16 +1,21 @@
 #include <stdio.h>
-/**
- * main - a program that prints its name, followed by a new line.
- *
- * @argc: number of command line arguments.
- * @argv: array of strings that holds the arguments values.
- *
- * Return: always 0.
-*/
 
-int main(int argc, char *argv[])
+/**
+ * main - Entry point of the program.
+ *
+ * Description:
+ *   This program prints the name of the executable (the program itself),
+ *   followed by a newline character. It takes command line arguments as input.
+ *
+ * @argc: The number of command line arguments (including the program name).
+ * @argv: An array of strings containing the command line arguments.
+ *
+ * Return:
+ *   Always returns 0 to indicate successful execution.
+ */
+int main(__attribute__((unused)) int argc, char *argv[])
 {
-	(void) argc;
 	printf("%s\n", argv[0]);
-	return (0);
+
+	return 0;
 }
