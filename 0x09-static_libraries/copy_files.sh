@@ -4,7 +4,7 @@
 # Author: AlsayedAldahawy
 
 # Note: This script is not an official task of the project.
-# It was created to help copy multiple files for personal use.
+# It was created to help search and copy multiple files for personal use.
 
 # Set repository path and destination path
 REPO_PATH="$HOME/ALX/alx-low_level_programming/*/"
