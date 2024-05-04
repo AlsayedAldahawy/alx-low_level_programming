@@ -33,7 +33,7 @@ FILES_NAMES=(
     6-abs.c
     9-strcpy.c
     _putchar.c
-    zxdd
+    notexitfile.c
 )
 
 # Iterate through subdirectories in the repository
