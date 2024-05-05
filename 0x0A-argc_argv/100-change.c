@@ -19,7 +19,7 @@
  * If the number passed as the argument is negative, it prints "0," followed
  * by a new line.
  *
- * You can use an unlimited number of coins with values 25, 10, 5, 2, and 1 cent.
+ * You can use an unlimited number of coins with values 25, 10, 5, 2, & 1 cent.
  *
  * @argc: Number of command line arguments.
  * @argv: Array of strings that holds the argument values.
@@ -36,9 +36,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-
 	x = atoi(argv[1]);
-
 	if (x <= 0)
 		printf("0\n");
 	else
@@ -70,6 +68,5 @@ int main(int argc, char *argv[])
 		}
 		printf("%i\n", coins);
 	}
-
 	return (0);
 }
