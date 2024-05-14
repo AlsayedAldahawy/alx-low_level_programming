@@ -13,7 +13,7 @@ int wordsCounter(char *str);
 char **strtow(char *str)
 {
 	char **arr;
-	int i = 0, j = 0, k, words, letters = 0;
+	int i = 0, j = 0, k, l, words, letters = 0;
 
 	if (!str || !*str)
 		return (NULL);
@@ -39,7 +39,7 @@ char **strtow(char *str)
 		if (str[i] == 32 || !str[i + 1])
 		{
 			/* Allocate memory for each word */
-			arr[j] = malloc(sizeof(char) * (letters + 1));
+			arr[j] = malloc(sizeof(char) * (letters));
 
 			if (!arr[j])
 			{
@@ -50,12 +50,15 @@ char **strtow(char *str)
 				return (NULL);
 			}
 
-			for (k = 0; letters; k++)
+			l = letters;
+			for (k = 0; k < l - 1; k++)
 			{
+
 				arr[j][k] = str[i - letters + 1];
 				letters--;
 			}
 			arr[j++][k] = '\0';
+			letters = 0;
 		}
 
 		i++;
