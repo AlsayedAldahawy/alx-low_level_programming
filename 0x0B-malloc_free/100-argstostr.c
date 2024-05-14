@@ -3,36 +3,40 @@
 #include <stdlib.h>
 
 /**
- * function that concatenates all the arguments of your program.
+ * argstostr - Concatenates all the arguments of your program.
+ * @ac: The number of arguments.
+ * @av: An array of pointers to strings (arguments).
  *
+ * Return: A pointer to the concatenated string, or NULL if malloc fails.
  */
 char *argstostr(int ac, char **av)
 {
-	char *ptr, i = 0, j = 0, k = 0, total_size = 0;
+	char *ptr;
+	int i, j, k, total_size = 0;
 
 	if (!ac || !av)
 		return (NULL);
 
-	while (i < ac)
-	{
-		for (total_size = total_size; *(av[i] + total_size); total_size++)
-			;
-
-		i++;
-	}
-
-	ptr = malloc(sizeof(char) * total_size + ac + 1);
-
 	for (i = 0; i < ac; i++)
 	{
-		for (j = 0; *(av[i] + j); j++, k++)
-			ptr[k] = *(av[i] + j);
-		
-		ptr[k] = '\n';
-		
+		for (j = 0; av[i][j]; j++)
+			total_size++;
+	}
+
+	ptr = malloc(sizeof(char) * (total_size + ac + 1));
+
+	if (!ptr)
+		return (NULL);
+
+	k = 0;
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j]; j++)
+			ptr[k++] = av[i][j];
+
+		ptr[k++] = '\n';
 	}
 	ptr[k] = '\0';
 
 	return (ptr);
-	
 }
