@@ -5,88 +5,89 @@
 int wordCounter(char *str);
 
 /**
- * strtow - a function that splits a string into words.
- * @str: string to be splitted.
+ * strtow - Splits a string into words.
+ * @str: String to be split.
  *
- * Return: The function returns a pointer to an array of strings (words)
- * Each element of this array should contain a single word, null-terminated
- * The last element of the returned array should be NULL
- * Words are separated by spaces
- * Returns NULL if str == NULL or str == ""
- * If your function fails, it should return NULL
+ * Return: Pointer to an array of strings (words), or NULL on failure.
  */
-
 char **strtow(char *str)
 {
-	int i = 0, j = 0, words = 0, letters = 0, k = 0, n = 0, s;
+	int i = 0, j = 0, words = 0, letters = 0, k = 0, n = 0, l = 0;
 	char **arr;
 
+	/*
+	 * Variables:
+	 * i: Iterating over the string str characters.
+	 * j: Iterating over the pointers of the allocated arr.
+	 * words: Number of words in the string.
+	 * letters: Counting the letters inside each word.
+	 * k: Counter for freeing allocated memories or assigning values to arr.
+	 * n: Used to save the number of letters while decrementing.
+	 * l: Handles the last character in the string.
+	 */
+
 	words = wordCounter(str);
-	if (str == NULL || *str == '\0' || !words)
-	{
-		return (NULL);
-	}
+	arr = malloc(sizeof(char *) * (words + 1));
 
-	arr = malloc((words + 1) * sizeof(char *));
-	if (arr == NULL)
+	if (!arr)
 		return (NULL);
 
-	for (i = 0; i < words; i++)
+	while (str[i])
 	{
-		letters = 0;
-		while (str[j])
+		if ((str[i] == ' ' && !letters) || (str[i] == ' ' && str[i - 1] == ' '))
 		{
-			if (str[j] != ' ')
-			{
-				letters++;
-			}
-			if (str[j] == ' ' && letters > 0)
-			{
-				break;
-			}
-			j++;
-		}
-		arr[i] = malloc((letters * sizeof(char)) + 1);
-		if (arr[i] == NULL)
-		{
-			free(arr);
-			for (k = 0; k <= i; k++)
-				free(arr[k]);
-			return (NULL);
+			i++;
+			continue;
 		}
 
-		for (k = n, s = 0; k < j; k++)
+		if (str[i] == ' ' || !str[i + 1])
 		{
-			if (str[k] != ' ')
+			if (!str[i + 1] && !(str[i] == 32))
+				l = 1;
+			else
+				l = 0;
+
+			arr[j] = malloc(sizeof(char) * (letters + 1));
+
+			if (!arr[j])
 			{
-				arr[i][s] = str[k];
-				s++;
+				for (k = 0; k < j; k++)
+					free(arr[k]);
+				free(arr);
+				return (NULL);
 			}
+
+			n = letters;
+
+			for (k = 0; k < n; k++)
+				arr[j][k] = str[i - (letters--) + l];
+
+			arr[j++][k] = '\0';
+			letters = 0;
 		}
-		arr[i][s] = '\0';
-		n = j;
+		else
+			letters++;
+
+		i++;
 	}
-	arr[i] = NULL;
+	arr[j] = NULL;
 	return (arr);
 }
 
 /**
- * wordCounter - counts words in a string.
- * @str: string.
+ * wordCounter - Counts words in a string.
+ * @str: String.
  *
- * Return: number of words.
+ * Return: Number of words.
  */
-
 int wordCounter(char *str)
 {
 	int i = 0, words = 0;
 
 	while (str[i])
 	{
-		if ((str[i] == 32 && i && str[i - 1] != 32) || (!str[i + 1] && str[i] != 32))
-		{
+		if ((i && str[i] == ' ' && str[i - 1] != ' ') || !str[i + 1])
 			words++;
-		}
 		i++;
 	}
 	return (words);
