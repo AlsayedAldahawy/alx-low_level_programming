@@ -47,7 +47,7 @@ char **strtow(char *str)
 			else
 				l = 0;
 
-			arr[j] = malloc(sizeof(char) * (letters + 1));
+			arr[j] = malloc(sizeof(char) * (letters + l));
 
 			if (!arr[j])
 			{
@@ -59,8 +59,8 @@ char **strtow(char *str)
 
 			n = letters;
 
-			for (k = 0; k < n; k++)
-				arr[j][k] = str[i - (letters--) + l];
+			for (k = 0; k < n + l; k++)
+				arr[j][k] = str[i - (letters--)];
 
 			arr[j++][k] = '\0';
 			letters = 0;
