@@ -54,7 +54,7 @@ char **strtow(char *str)
 			else
 				l = 0;
 
-			arr[j] = malloc(sizeof(char) * (letters + l));
+			arr[j] = malloc(sizeof(char) * (letters + 1));
 
 			if (!arr[j])
 			{
