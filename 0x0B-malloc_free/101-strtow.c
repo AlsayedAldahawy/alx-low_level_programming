@@ -26,6 +26,9 @@ char **strtow(char *str)
 	 * l: Handles the last character in the string.
 	 */
 
+	if (!str || !*str)
+		return (NULL);
+
 	words = wordCounter(str);
 	arr = malloc(sizeof(char *) * (words + 1));
 
