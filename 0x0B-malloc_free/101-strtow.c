@@ -31,6 +31,9 @@ char **strtow(char *str)
 
 	words = wordCounter(str);
 
+	if (!words)
+		return (NULL);
+
 	arr = malloc(sizeof(char *) * (words + 1));
 
 	if (!arr)
