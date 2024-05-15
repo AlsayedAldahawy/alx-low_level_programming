@@ -50,11 +50,11 @@ char **strtow(char *str)
 		if (str[i] == ' ' || !str[i + 1])
 		{
 			if (!str[i + 1] && !(str[i] == 32))
-				l = 1;
-			else
 				l = 0;
+			else
+				l = 1;
 
-			arr[j] = malloc(sizeof(char) * (letters + 1));
+			arr[j] = malloc(sizeof(char) * (letters + l));
 
 			if (!arr[j])
 			{
@@ -66,7 +66,7 @@ char **strtow(char *str)
 
 			n = letters;
 
-			for (k = 0; k < n + l; k++)
+			for (k = 0; k <= n - l; k++)
 				arr[j][k] = str[i - (letters--)];
 
 			arr[j++][k] = '\0';
