@@ -30,6 +30,7 @@ char **strtow(char *str)
 		return (NULL);
 
 	words = wordCounter(str);
+
 	arr = malloc(sizeof(char *) * (words + 1));
 
 	if (!arr)
@@ -79,17 +80,17 @@ char **strtow(char *str)
 
 /**
  * wordCounter - Counts words in a string.
- * @str: String.
+ * @s: String.
  *
  * Return: Number of words.
  */
-int wordCounter(char *str)
+int wordCounter(char *s)
 {
 	int i = 0, words = 0;
 
-	while (str[i])
+	while (s[i])
 	{
-		if ((i && str[i] == ' ' && str[i - 1] != ' ') || !str[i + 1])
+		if ((i && s[i] == ' ' && s[i - 1] != ' ') || (!s[i + 1] && s[i] != 32))
 			words++;
 		i++;
 	}
