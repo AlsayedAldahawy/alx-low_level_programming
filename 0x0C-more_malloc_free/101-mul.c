@@ -3,147 +3,156 @@
 #include <stdlib.h>
 #include <string.h>
 
-unsigned long int ston(char *s);
-int isnum(char s[]);
-int _strlen(char *s);
+/**
+ * isInteger - Checks if a string represents an integer
+ *			(positive, negative, or zero).
+ *
+ * @str: The string to be checked.
+ *
+ * Return: The length of the integer represented by the string, or 0 if the
+ *         string is not a valid integer. The return value can be negative to
+ *         indicate anegative number.
+ */
+int isInteger(char *str)
+{
+	unsigned int i = 0, NonZero = 0;
+	int sign = 1, x = 0;
+
+	if (!str || !str[i])
+		return (0);
+
+	if (str[i] == '-')
+	{
+		sign = -1;
+		x = 1;
+		i++;
+	}
+
+	while (str[i])
+	{
+		if (str[i] > '9' || str[i] < '0')
+			return (0);
+
+		if (str[i] != '0')
+			NonZero = 1;
+
+		i++;
+	}
+	return (((i * sign) + x) * NonZero);
+}
 
 /**
- * main -a program that multiplies two positive numbers.
+ * intMul - Multiplies two integer strings and returns the result as
+ *			a new string.
  *
- * @argv: arguments vector.
- * @argc: arguments counter.
+ * @ptr: A pointer to a pre-allocated memory location where the result
+ *			will be stored.
+ * @str1: The first integer string.
+ * @str2: The second integer string.
+ * @l1: The length of the first integer string.
+ * @l2: The length of the second integer string.
  *
- * Return: 0 when success.
- * Usage: mul num1 num2
- * num1 and num2 will be passed in base 10
- * Print the res, followed by a new line
+ * Return: A pointer to the memory location containing the result string.
+ */
+char *intMul(char *ptr, char *str1, char *str2, int l1, int l2)
+{
+	int j, k, carry, result, oldValue;
+	char d1, d2;
+
+	while (--l1 >= 0)
+	{
+		j = l2 - 1;
+		k = l1 + l2;
+		carry = 0;
+		while (j >= 0)
+		{
+			d1 = str1[l1] - '0';
+			d2 = str2[j--] - '0';
+			oldValue = ptr[k] - '0';
+			result = (d1 * d2) + oldValue + carry;
+			ptr[k--] = (result % 10) + '0';
+			carry = (result / 10);
+			if (j < 0)
+				ptr[k] = carry + '0';
+		}
+	}
+	return (ptr);
+}
+
+/**
+ * leadingZeros - Counts the number of leading zeros in a string.
  *
- * *****If the number of arguments is incorrect, print Error,
- * followed by a new line, and exit with a status of 98******
+ * @str: The string to be checked.
  *
- * ******num1 and num2 should only be composed of digits. If not,
- * print Error, followed by a new line, and exit with a status of 98*****
+ * Return: The number of leading zeros in the string.
+ */
+int leadingZeros(char *str)
+{
+	int i = 0;
+
+	while (str[i])
+	{
+		if (str[i] == '0')
+			i++;
+		else
+			return (i);
+	}
+	return (i);
+}
+
+/**
+ * main - Multiplies two positive numbers given as command-line arguments.
  *
- * ****You are allowed to use more than 5 functions in your file****
+ * @argc: The number of command-line arguments.
+ * @argv: An array of pointers to the command-line arguments.
+ *
+ * Return: 0 on success, 98 on error.
+ *
+ * Exit codes:
+ *   - 98: If the number of arguments is incorrect or if either operand is not
+ *         a valid positive integer.
  */
 
 int main(int argc, char *argv[])
 {
-	int *res, len_1, len_2, len_r, i, d1 = 0, d2 = 0, carry, frstD = 0;
-	char *str1 = argv[1], *str2 = argv[2];
+	char *ptr;
+	int len_1, len_2, i, sign1 = 0, sign2 = 0;
+	unsigned int LZ1, LZ2, skip1, skip2;
 
-	if (argc != 3 || (!(isnum(str1) && isnum(str2))))
+	len_1 = isInteger(argv[1]);
+	len_2 = isInteger(argv[2]);
+	(len_1 < 0) ? (len_1 *= -1, sign1 = 1) : (0);
+	(len_2 < 0) ? (len_2 *= -1, sign2 = 1) : (0);
+
+	if (argc != 3 || !len_1 || !len_2)
 	{
 		printf("Error\n");
 		exit(98);
 	}
 
-	len_1 = _strlen(str1);
-	len_2 = _strlen(str2);
+	LZ1 = leadingZeros(argv[1] + sign1);
+	LZ2 = leadingZeros(argv[2] + sign2);
 
-	len_r = len_1 + len_2;
-	res = malloc(sizeof(int) * len_r);
-	if (!res)
+	len_1 -= LZ1;
+	len_2 -= LZ2;
+
+	ptr = malloc(sizeof(char) * (len_1 + len_2));
+
+	if (!ptr)
 		return (1);
+
 	for (i = 0; i < len_1 + len_2; i++)
-		res[i] = 0;
-	for (len_1 = len_1; len_1 > 0; len_1--)
-	{
-		d1 = str1[len_1 - 1] - 48;
-		carry = 0;
-		for (len_2 = _strlen(str2); len_2 > 0; len_2--)
-		{
-			d2 = str2[len_2 - 1] - 48;
-			carry += res[len_1 + len_2 - 1] + (d1 * d2);
-			res[len_1 + len_2 - 1] = carry % 10;
-			carry /= 10;
-		}
-		if (carry > 0)
-			res[len_1 + len_2] += carry;
-	}
-	for (i = 0; i < len_r; i++)
-	{
-		if (res[i])
-			frstD = 1;
-		if (frstD)
-			_putchar(res[i] + 48);
-	}
-	if (!frstD)
-		_putchar(48);
+		ptr[i] = '0';
+	skip1 = sign1 + LZ1;
+	skip2 = sign2 + LZ2;
+
+	ptr = intMul(ptr, (argv[1] + skip1), (argv[2] + skip2), len_1, len_2);
+	(sign1 != sign2) ? (_putchar('-')) : (0);
+
+	for (i = 0; i < len_1 + len_2; i++)
+		(!i && ptr[i] == '0') ? (i++, _putchar(ptr[i])) : (_putchar(ptr[i]));
+
 	_putchar('\n');
-	free(res);
+	free(ptr);
 	return (0);
-}
-
-/**
- * ston - a function that converts a string to unsigned long int.
- *
- * @s: string to be converted to unsigned long int.
- *
- * Return: integer unsigned long int.
-*/
-
-unsigned long int ston(char *s)
-{
-	int length = 0, neg = 1;
-	unsigned long int num = 0;
-
-	while (s[length] != '\0')
-	{
-		if (s[length] == '-')
-		{
-			neg = -1;
-			length++;
-		}
-
-		num = (num * 10) + (s[length] - '0');
-		length++;
-	}
-
-	return (neg * num);
-}
-
-/**
- * isnum - a function that checks if a string is a number.
- *
- * @s: string to be checked.
- *
- * Return: 1 if number, otherwise 0.
-*/
-
-int isnum(char s[])
-{
-	int length = 0;
-
-	while (s[length] != '\0')
-	{
-		if (s[length] > 57 || s[length] < 48)
-		{
-			return (0);
-		}
-
-		length++;
-	}
-
-	return (1);
-}
-
-/**
- * _strlen - a function that returns the length of a string.
- *
- * @s: string passed by reference.
- *
- * Return: returns the length of the string.
- *
-*/
-
-int _strlen(char *s)
-{
-	int i = 0;
-
-	while (*(s + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
 }
