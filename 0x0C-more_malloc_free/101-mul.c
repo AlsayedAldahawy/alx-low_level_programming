@@ -3,6 +3,67 @@
 #include <stdlib.h>
 #include <string.h>
 
+int isInteger(char *str);
+int leadingZeros(char *str);
+int isZero(char *str);
+char *intMul(char *ptr, char *str1, char *str2, int l1, int l2);
+
+
+/**
+ * main - Multiplies two positive numbers given as command-line arguments.
+ *
+ * @argc: The number of command-line arguments.
+ * @argv: An array of pointers to the command-line arguments.
+ *
+ * Return: 0 on success, 98 on error.
+ *
+ * Exit codes:
+ *   - 98: If the number of arguments is incorrect or if either operand is not
+ *         a valid positive integer.
+ */
+
+int main(int argc, char *argv[])
+{
+	char *ptr;
+	int len_1, len_2, i, sign1 = 0, sign2 = 0;
+	unsigned int LZ1, LZ2, skip1, skip2;
+
+	len_1 = isInteger(argv[1]);
+	len_2 = isInteger(argv[2]);
+	(len_1 < 0) ? (len_1 *= -1, sign1 = 1) : (0);
+	(len_2 < 0) ? (len_2 *= -1, sign2 = 1) : (0);
+	if (argc != 3 || !len_1 || !len_2)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+	if (isZero(argv[1] + sign1) || isZero(argv[2] + sign2))
+	{
+		printf("0\n");
+		return (0);
+	}
+	LZ1 = leadingZeros(argv[1] + sign1);
+	LZ2 = leadingZeros(argv[2] + sign2);
+	len_1 -= LZ1;
+	len_2 -= LZ2;
+	ptr = malloc(sizeof(char) * (len_1 + len_2));
+	if (!ptr)
+		return (1);
+	for (i = 0; i < len_1 + len_2; i++)
+		ptr[i] = '0';
+	skip1 = sign1 + LZ1;
+	skip2 = sign2 + LZ2;
+	ptr = intMul(ptr, (argv[1] + skip1), (argv[2] + skip2), len_1, len_2);
+	(sign1 != sign2) ? (_putchar('-')) : (0);
+	skip1 = 0;
+	for (i = 0; i < len_1 + len_2; i++)
+		((!skip1 && ptr[i] == '0')) ? (0) : (_putchar(ptr[i]), skip1++);
+	_putchar('\n');
+	free(ptr);
+	return (0);
+}
+
+
 /**
  * isInteger - Checks if a string represents an integer
  *			(positive, negative, or zero).
@@ -117,57 +178,4 @@ int isZero(char *str)
 			return (0);
 	}
 	return (1);
-}
-/**
- * main - Multiplies two positive numbers given as command-line arguments.
- *
- * @argc: The number of command-line arguments.
- * @argv: An array of pointers to the command-line arguments.
- *
- * Return: 0 on success, 98 on error.
- *
- * Exit codes:
- *   - 98: If the number of arguments is incorrect or if either operand is not
- *         a valid positive integer.
- */
-
-int main(int argc, char *argv[])
-{
-	char *ptr;
-	int len_1, len_2, i, sign1 = 0, sign2 = 0;
-	unsigned int LZ1, LZ2, skip1, skip2;
-
-	len_1 = isInteger(argv[1]);
-	len_2 = isInteger(argv[2]);
-	(len_1 < 0) ? (len_1 *= -1, sign1 = 1) : (0);
-	(len_2 < 0) ? (len_2 *= -1, sign2 = 1) : (0);
-	if (argc != 3 || !len_1 || !len_2)
-	{
-		printf("Error\n");
-		exit(98);
-	}
-	if (isZero(argv[1] + sign1) || isZero(argv[2] + sign2))
-	{
-		printf("0\n");
-		return (0);
-	}
-	LZ1 = leadingZeros(argv[1] + sign1);
-	LZ2 = leadingZeros(argv[2] + sign2);
-	len_1 -= LZ1;
-	len_2 -= LZ2;
-	ptr = malloc(sizeof(char) * (len_1 + len_2));
-	if (!ptr)
-		return (1);
-	for (i = 0; i < len_1 + len_2; i++)
-		ptr[i] = '0';
-	skip1 = sign1 + LZ1;
-	skip2 = sign2 + LZ2;
-	ptr = intMul(ptr, (argv[1] + skip1), (argv[2] + skip2), len_1, len_2);
-	(sign1 != sign2) ? (_putchar('-')) : (0);
-	skip1 = 0;
-	for (i = 0; i < len_1 + len_2; i++)
-		((!skip1 && ptr[i] == '0')) ? (0) : (_putchar(ptr[i]), skip1++);
-	_putchar('\n');
-	free(ptr);
-	return (0);
 }
