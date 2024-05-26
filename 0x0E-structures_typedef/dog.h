@@ -2,13 +2,14 @@
 #define DOG_H
 
 /**
- * struct dog - dog struct
- * @name: dog's name.
- * @owner: Dog's owner.
- * @age: Dog's age.
- * Description: struct that has dog name, owner, age.
+ * struct dog - Represents information about a dog.
+ * @name: Pointer to the dog's name.
+ * @age: Age of the dog (in years).
+ * @owner: Pointer to the owner's name.
+ *
+ * Description: This structure defines the basic information about a dog,
+ * including its name, age, and owner.
  */
-
 typedef struct dog
 {
 	char *name;
@@ -16,12 +17,4 @@ typedef struct dog
 	char *owner;
 } dog;
 
-void init_dog(struct dog *d, char *name, float age, char *owner);
-void print_dog(struct dog *d);
-
-typedef struct dog dog_t;
-
-dog_t *new_dog(char *name, float age, char *owner);
-void free_dog(dog_t *d);
-
-#endif
+#endif /* DOG_H */
