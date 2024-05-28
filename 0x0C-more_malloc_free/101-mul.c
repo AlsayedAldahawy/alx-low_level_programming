@@ -63,7 +63,6 @@ int main(int argc, char *argv[])
 	return (0);
 }
 
-
 /**
  * isInteger - Checks if a string represents an integer
  *			(positive, negative, or zero).
@@ -93,7 +92,6 @@ int isInteger(char *str)
 	{
 		if (str[i] > '9' || str[i] < '0')
 			return (0);
-
 		i++;
 	}
 	return (((i * sign) + x));
