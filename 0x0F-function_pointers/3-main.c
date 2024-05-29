@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	if (!func)
 	{
 		printf("Error\n");
-		exit(98); /* Exit with error code 98 (invalid operator) */
+		exit(99); /* Exit with error code 98 (invalid operator) */
 	}
 
 	num1 = atoi(argv[1]); /* Convert first argument to an integer */
