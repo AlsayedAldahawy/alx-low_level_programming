@@ -34,7 +34,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	{
 		arg = va_arg(ap, char *); /* Retrieve the next argument as a string */
 
-		printf("%s", arg ? arg : "nil"); /* Print the string or "nil" */
+		printf("%s", arg ? arg : "(nil)"); /* Print the string or "nil" */
 
 		if (separator && i < (n - 1))
 		{
