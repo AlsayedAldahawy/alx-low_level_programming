@@ -8,17 +8,23 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *temp;
+	listint_t *ptr;
 	unsigned int i = 0;
 
 	while (*h)
 	{
-		temp = (*h)->next;
-		(*h)->next = NULL;
+		ptr = (*h)->next;
+
 		free(*h);
-		*h = temp;
 		i++;
-		/* printf("infinite loop\n"); */
+
+		if (ptr > *h)
+		{
+			*h = NULL;
+			return (i);
+		}
+
+		*h = ptr;
 	}
 
 	return (i);
