@@ -8,18 +8,28 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *ptr;
-	unsigned int i = 0;
+	listint_t *ptr1 = head;
+	listint_t *ptr2 = head;
 
-	while (head)
+	if (!head)
+		return (NULL);
+
+	while (ptr1 && ptr2 && ptr2->next)
 	{
-		ptr = (head)->next;
-		i++;
-		if (ptr >= head)
+		ptr2 = ptr2->next->next;
+		ptr1 = ptr1->next;
+		if (ptr2 == ptr1)
 		{
-			return (head);
+			ptr1 = head;
+			while (ptr1 != ptr2)
+			{
+				ptr1 = ptr1->next;
+				ptr2 = ptr2->next;
+			}
+			return (ptr2);
 		}
-		head = ptr;
 	}
+
 	return (NULL);
 }
+
