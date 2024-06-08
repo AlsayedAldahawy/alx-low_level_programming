@@ -18,7 +18,7 @@ size_t free_listint_safe(listint_t **h)
 		free(*h);
 		i++;
 
-		if (ptr > *h)
+		if (ptr >= *h)
 		{
 			*h = NULL;
 			return (i);
