@@ -21,8 +21,8 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 
 		digit = b[len] - '0';
-		sum = (sum + digit) * 2;
+		sum = sum * 2 + digit;
 		len++;
 	}
-	return (sum / 2);
+	return (sum);
 }
