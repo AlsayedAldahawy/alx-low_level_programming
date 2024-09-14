@@ -18,6 +18,11 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 		if (xor & 1)
 			c++;
 		xor >>= 1;
+		/**
+		 * better method for less iterations
+		 * c++;
+		 * xor &= (xor - 1);
+		 */
 	}
 	return (c);
 }
